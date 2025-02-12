@@ -8,6 +8,9 @@ The "books" variable.
 ## Location: /app/(root)/page.tsx
 "BookOverview" and "books" variable.
 
+## Location: /app/(root)/my-profile/layout.tsx
+No overload matches this call.
+
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

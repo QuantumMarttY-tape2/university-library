@@ -9,6 +9,8 @@ import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import ratelimit from "../ratelimit";
 import { redirect } from "next/navigation";
+import { workflowClient } from "../workflow";
+import config from "@/lib/config";
 
 // Only pickk email and password from AuthCredentials.
 export const signInWithCredentials = async (params: Pick<AuthCredentials, "email" | "password">) => {
@@ -72,6 +74,15 @@ export const signUp = async (params: AuthCredentials) => {
             password: hashedPassword,
             universityId,
             universityCard
+        });
+
+        // Trigger the upstash Workflow as soon as a user is created in the database.
+        await workflowClient.trigger({
+            url: `${config.env.prodApiEndpoint}/api/workflow/onboarding`,
+            body:{
+                email,
+                fullName,
+            }
         })
 
         // Sign the user in.
