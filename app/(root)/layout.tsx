@@ -12,20 +12,20 @@ const Layout = async ({ children }: { children: ReactNode }) => {
     const session = await auth();
     if (!session) redirect("/sign-in");
 
-    // Update the user's last activity. We only want to update this once a day because we only need accuracy at day level.
-    // Get the user to see if the last activity date is today.
-    const user = await db
-        .select()
-        .from(users)
-        .where(eq(users.id, session?.user?.id))
-        .limit(1);
-    
-    // If the last activity date is today, return.
-    if (user[0].lastActivityDate === new Date().toISOString().slice(0,10)) return;
-
     after(async () => {
         // If user does not exist, return.
         if (!session?.user?.id) return;
+        
+        // Update the user's last activity. We only want to update this once a day because we only need accuracy at day level.
+        // Get the user to see if the last activity date is today.
+        const user = await db
+            .select()
+            .from(users)
+            .where(eq(users.id, session?.user?.id))
+            .limit(1);
+        
+        // If the last activity date is today, return.
+        if (user[0].lastActivityDate === new Date().toISOString().slice(0,10)) return;
 
         // Only updates if the user is logged in.
         await db
