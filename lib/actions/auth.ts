@@ -78,7 +78,7 @@ export const signUp = async (params: AuthCredentials) => {
 
         // Trigger the upstash Workflow as soon as a user is created in the database.
         await workflowClient.trigger({
-            url: `${config.env.prodApiEndpoint}/api/workflow/onboarding`,
+            url: `${config.env.prodApiEndpoint}/api/workflows/onboarding`,
             body:{
                 email,
                 fullName,
