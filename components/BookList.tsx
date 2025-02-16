@@ -8,6 +8,8 @@ interface Props {
 }
 
 const BookList = ({ title, books, containerClassName }: Props) => {
+    // Only shown when there are 2 or more books.
+    if (books.length < 2) return ;
     return (
         <section className={containerClassName}>
             {/* Render title. */}

@@ -2,15 +2,14 @@
 Safari blocks access to localhost:3000. Use Chrome to open it instead.
 
 # Errors:
-## Location: /app/(root)/my-profile/page.tsx
-The "books" variable.
+## Location: /components/BorrowBook.tsx
+Property 'error' does not exist on type......
 
-## Location: /app/(root)/page.tsx
-"BookOverview" and "books" variable.
+## Location: /components/BookCard.tsx
+Property 'isLoanedBook' does not exist on type 'Book'.
 
-## Location: /app/(root)/my-profile/layout.tsx
-No overload matches this call.
-
+## Location: /components/FileUpload.tsx
+IKImage and IKVideo, put a few "!" marks there, it feeds me error if I do not.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
