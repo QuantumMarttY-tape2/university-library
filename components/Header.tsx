@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 const Header = () => {
     // We want to highlight the current page on the navbar by changing it to the primary color.
     // This "usePathname" hook requires 'use client' at the top.
-    const pathname = usePathname();
+    // const pathname = usePathname();
 
     return (
         <header className="my-10 flex justify-between gap-5">
