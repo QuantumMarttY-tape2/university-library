@@ -76,7 +76,7 @@ const BookOverview = async ({
                 <p className="book-description">{description}</p>
 
                 {/* Borrow Book Button. Only shows if the user exists. */}
-                {!user && <BorrowBook userId={userId} bookId={id} borrowingEligibility={borrowingEligibility} />}
+                {user && <BorrowBook userId={userId} bookId={id} borrowingEligibility={borrowingEligibility} />}
             </div>
 
             {/* Book Cover. */}
