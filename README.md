@@ -1,10 +1,10 @@
 # Note when running "npm run db:studio" to open SQL database:
 Safari blocks access to localhost:3000. Use Chrome to open it instead.
 
-# Errors:
-## Location: /components/BorrowBook.tsx
-Property 'error' does not exist on type......
+# Video source:
+https://www.youtube.com/watch?v=EZajJGOMWas
 
+# Errors:
 ## Location: /components/BookCard.tsx
 Property 'isLoanedBook' does not exist on type 'Book'.
 
