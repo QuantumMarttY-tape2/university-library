@@ -26,11 +26,8 @@ const BookOverview = async ({
     // Get user data.
     const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
 
-    // If user does not exist, do not borrow.
-    if (!user) return null;
-
     const borrowingEligibility = {
-        isEligible: availableCopies > 0 && user.status == "APPROVED",
+        isEligible: availableCopies > 0 && user?.status == "APPROVED",
         message: availableCopies < 0 ? "Book is not available" : "You are not eligible to borrow this book.",
     }
     return (
@@ -78,8 +75,8 @@ const BookOverview = async ({
                 {/* Book Description. */}
                 <p className="book-description">{description}</p>
 
-                {/* Borrow Book Button. */}
-                <BorrowBook userId={userId} bookId={id} borrowingEligibility={borrowingEligibility} />
+                {/* Borrow Book Button. Only shows if the user exists. */}
+                {!user && <BorrowBook userId={userId} bookId={id} borrowingEligibility={borrowingEligibility} />}
             </div>
 
             {/* Book Cover. */}
